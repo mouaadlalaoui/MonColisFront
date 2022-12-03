@@ -65,7 +65,7 @@ function Inscription() {
     </div>
    
     <h3> Sign-up Form </h3>
-    <img src="/gfg.png" />
+    <img src="/sign-up.png" />
         <label >
           Name:
         </label><br/>

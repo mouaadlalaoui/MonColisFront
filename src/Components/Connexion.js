@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import '../Connexion.css';
 import register from '../Services/Inscription.service';
- 
+ import Log_in from "../Services/Inscription.service";
 
 function Connexion() {
   // React States
@@ -31,23 +31,26 @@ function Connexion() {
     event.preventDefault();
 
     var { uname, pass } = document.forms[0];
+    console.log(uname.value, pass.value);
+    Log_in(uname.value,pass.value);
 
     // Find user login info
     const userData = database.find((user) => user.username === uname.value);
 
     // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
-  };
+//     if (userData) {
+//       if (userData.password !== pass.value) {
+//         // Invalid password
+//         setErrorMessages({ name: "pass", message: errors.pass });
+//       } else {
+//         setIsSubmitted(true);
+//       }
+//     } else {
+//       // Username not found
+//       setErrorMessages({ name: "uname", message: errors.uname });
+//     }
+
+ };
 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
@@ -61,13 +64,13 @@ function Connexion() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
+          <input type="email" name="uname" required />
+          {/* {// renderErrorMessage("uname")} */}
         </div>
         <div className="input-container">
           <label>Password </label>
           <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
+          {/* {renderErrorMessage("pass")} */}
         </div>
         <div className="button-container">
           <input type="submit" />
